@@ -2,6 +2,8 @@
 
 const lblOnline = document.querySelector('#lblOnline');
 const lblOffline = document.querySelector('#lblOffline');
+txtMensaje = document.querySelector('#txtMensaje');
+btnEnviar = document.querySelector('#btnEnviar');
 
 
 const socket = io();
@@ -19,4 +21,17 @@ socket.on('disconnect', () => {
     lblOnline.style.display = 'none';
     lblOffline.style.display = '';
     
-})
+});
+
+btnEnviar.addEventListener ('click', () =>{
+    const mensaje = txtMensaje.value;
+
+    const payload = {
+        mensaje,
+        id: '123abc',
+        fecha: new Date().getTime()
+    }
+
+    socket.emit('enviar-mensaje', payload)
+    
+}) 
