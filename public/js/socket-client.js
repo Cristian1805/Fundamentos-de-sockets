@@ -23,6 +23,7 @@ socket.on('disconnect', () => {
     
 });
 
+//Esuchar mensaje desde el backend
 btnEnviar.addEventListener ('click', () =>{
     const mensaje = txtMensaje.value;
 
@@ -32,6 +33,6 @@ btnEnviar.addEventListener ('click', () =>{
         fecha: new Date().getTime()
     }
 
-    socket.emit('enviar-mensaje', payload)
+    socket.emit('enviar-mensaje', payload);
     
 }) 
